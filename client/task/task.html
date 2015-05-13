@@ -1,0 +1,26 @@
+<template name="task">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>{{title}}</h1>
+                    <div>
+                        <h5>{{value}} / {{count}} символов </h5>
+                        <h5>{{deadlineTime}} {{newDate}}</h5>
+                        <h5>{{fullname}}</h5>
+                        {{#if comment}}
+                            <h5>Комментарий: {{comment}}</h5>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            {{> editor }}
+
+        </div>
+    </div>
+</template>

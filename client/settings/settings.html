@@ -1,0 +1,31 @@
+<template name="settings">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Настройки</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#users" data-toggle="tab" aria-expanded="true">Пользователи</a></li>
+                <li class=""><a href="#publications" data-toggle="tab" aria-expanded="false">Публикации</a></li>
+                <li class=""><a href="#measure" data-toggle="tab" aria-expanded="false">Измерения</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="users">
+                    {{> usersSettings }}
+                </div>
+                <div class="tab-pane fade" id="publications">
+                    {{> publicationsSettings }}
+                </div>
+                <div class="tab-pane fade" id="measure">
+                    {{> measureSettings }}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

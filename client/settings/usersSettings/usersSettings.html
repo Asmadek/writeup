@@ -1,0 +1,25 @@
+<template name="usersSettings">
+    <h3>Пользователи</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ФИО
+                </th>
+                <th>
+                    Права
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+                {{> userItem }}
+            {{/each}}
+        </tbody>
+        <div>
+            <button class="btn btn-primary">
+                Добавить пользователя
+            </button>
+        </div>
+    </table>
+</template>

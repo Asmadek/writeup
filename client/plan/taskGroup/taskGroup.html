@@ -1,0 +1,10 @@
+<template name="taskGroup">
+    <h3>{{day}}</h3>
+    <table class="table table-hover">
+        <tbody>
+            {{#each tasks}}
+                {{> taskItem}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>

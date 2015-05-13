@@ -1,0 +1,30 @@
+<template name="plan">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Контент-план</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="col-md-1">Время</th>
+                    <th class="col-md-4">Название</th>
+                    <th class="col-md-2">Исполнитель</th>
+                    <th class="col-md-1">Готовность</th>
+                    <th class="col-md-1">Статус</th>
+                    <th class="col-md-3">Действие</th>
+                </tr>
+                </thead>
+            </table>
+            {{#each tasksGrouped}}
+                {{> taskGroup}}
+            {{/each}}
+        </div>
+    </div>
+</template>
