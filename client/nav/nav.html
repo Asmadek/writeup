@@ -12,12 +12,13 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-                <li><a href="/plan">Контент-план</a></li>
-				<li><a href="/current">Текущие задания</a></li>
-                <li><a href="/settings">Настройки</a></li>
-			</ul>
-			
+			{{#if currentUser}}
+				<ul class="nav navbar-nav">
+	                <li><a href="/plan">Контент-план</a></li>
+					<li><a href="/current">Текущие задания</a></li>
+	                <li><a href="/settings">Настройки</a></li>
+				</ul>
+			{{/if}}
 			<ul class="nav navbar-nav navbar-right">
 				{{#if currentUser}}
                     <li><a href="/new">Создать</a></li>
@@ -32,9 +33,6 @@
 				{{else}}
 					<li>
 						<a href="/login">Вход</a>
-					</li>
-					<li>
-						<a href="/registration">Регистрация</a>
 					</li>
 				{{/if}}
 			</ul>

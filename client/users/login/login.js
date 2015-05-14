@@ -15,4 +15,12 @@ Template.login.events({
         }
 
     }
-})
+});
+
+Template.login.onCreated(function(){
+    if (Meteor.user()) {
+        Router.go("index");
+    }
+});
+
+
