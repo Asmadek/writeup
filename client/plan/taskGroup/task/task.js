@@ -9,4 +9,13 @@ Template.taskItem.helpers({
 	'progress': function (params) {
 		return Math.floor((this.value * 100) / this.count);
 	}
+});
+
+Template.taskItem.events({
+	'click .complete': function (event, template) {
+        Tasks.update({_id: this._id}, {$set: {status: STATUS_ENG.completed}});
+	},
+	'click .send': function (event, template) {
+		Session.set("taskId", this._id);
+	}	
 })

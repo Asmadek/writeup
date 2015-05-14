@@ -2,8 +2,16 @@ Meteor.publish('news', function() {
   return News.find();
 });
 
+Meteor.publish('messages', function() {
+  return Messages.find();
+});
+
 Meteor.publish('tasks', function() {
   return Tasks.find();
+});
+
+Meteor.publish('mytasks', function() {
+  return Tasks.find({employer: this.userId});
 });
 
 Meteor.publish('notifications', function() {

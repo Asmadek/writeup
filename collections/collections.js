@@ -4,6 +4,7 @@ Notifications = new Meteor.Collection('notifications');
 
 Companies = new Meteor.Collection('companies');
 Measures = new Meteor.Collection('measures');
+Messages = new Meteor.Collection('messages');
 
 Images = new FS.Collection("images", {
     stores: [

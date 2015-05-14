@@ -8,17 +8,11 @@ Template.login.events({
 
         var error = Meteor.loginWithPassword(email, password);
 
+        if (error) {
+            
+        } else {
+            Router.go("index");
+        }
 
-        var notification = {
-            type: 'danger',
-            head: 'Вход',
-            content: 'Логин или пароль не верен',
-            viewed: 0
-        };
-
-        var notifications = localStorage.getItem('notifications');
-        notifications = JSON.parse(notifications) || [];
-        notifications.push(notification);
-        localStorage.setItem('notifications', JSON.stringify(notifications));
     }
 })

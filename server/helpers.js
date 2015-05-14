@@ -55,5 +55,23 @@ Meteor.methods({
             var id = Tasks.insert(task);
             return id;
         };
+    },
+    updateTask: function(id, task) {
+        if (task) {            
+            var id = Tasks.update({_id: id}, task);
+        };
+    },
+    completeTask: function(id) {
+        if (id) {
+            
+            var res = Tasks.update({_id: id}, {$set: {status: STATUS_ENG.completed}});
+            return res;
+        };
+    },
+    sendTask: function(message) {
+        if (message) {
+            var res = Messages.insert(message);
+            return res;
+        };
     }
 });

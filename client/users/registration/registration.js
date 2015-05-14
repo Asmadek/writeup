@@ -8,7 +8,7 @@ Template.registration.events({
         var email = $("#inputEmail").val();
         var password = $("#inputPassword").val();
 
-        Meteor.call('regUser', name, sname, email, password, company, function(error) {
+        Meteor.call('regUser', name, sname, email, password, function(error) {
             console.log(error);
 
             var newError = Meteor.loginWithPassword(email, password);
