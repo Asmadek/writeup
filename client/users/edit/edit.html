@@ -1,0 +1,28 @@
+<template name="editUser">
+    <div class="container registration">
+        <div class="row">
+            <form class="form-horizontal">
+              <fieldset>
+                <legend>Редактировать пользователя</legend>
+                <div class="form-group">
+                  <label for="inputName" class="col-lg-2 control-label">Имя</label>
+                  <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputName" value="{{profile.name}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputSName" class="col-lg-2 control-label">Фамилия</label>
+                  <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputSName" value="{{profile.sname}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <button type="submit" class="btn btn-primary">Редактировать пользователя</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+        </div>
+    </div>
+</template>

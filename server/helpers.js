@@ -73,5 +73,18 @@ Meteor.methods({
             var res = Messages.insert(message);
             return res;
         };
+    },
+    banUser: function(id){
+        var res = Meteor.users.update({_id: id}, {$set:{"profile.ban": true}});
+        return res;
+    },
+    unbanUser: function(id){
+        var res = Meteor.users.update({_id: id}, {$set:{"profile.ban": false}});
+        return res;
+    },
+    editUser: function(user){
+        var res = Meteor.users.update({_id: user.id}, {$set:{"profile.name": user.name, "profile.sname": user.sname}});
+        return res;
     }
+    
 });

@@ -1,6 +1,13 @@
 <template name="userItem">
     <tr>
-        <td>{{sname}} {{name}} {{mname}}</td>
-        <td></td>
+        <td class="col-md-6">{{profile.name}} {{profile.sname}}</td>
+        <td class="col-md-6">
+            <a href="/user/{{_id}}/edit">Редактировать</a> | 
+            {{#if profile.ban}}
+                <a href="#" class="unbanUser">Разблокировать</a>
+            {{else}}
+                <a href="#" class="banUser">Заблокировать</a>
+            {{/if}}
+        </td>
     </tr>
 </template>
