@@ -3,11 +3,7 @@
 		<div class="row">
 			<div class="jumbotron">
 				<div class="container">
-		  			<h1>Предмет 1</h1>
-			            <div>
-			              <h4>123 / 1000 слов </h4>
-			              <h4>12:00 23 ноября 2014 года</h4>
-			            </div>
+		  			<h1>Новости</h1>
 	  			</div>
 			</div>
 		</div>
@@ -15,7 +11,42 @@
 	<div class="container">
 		<div class="row">
 
-
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">
+                            Дата
+                        </th>
+                        <th class="col-md-2">
+                            От кого
+                        </th>
+                        <th class="col-md-3">
+                            Материал
+                        </th>
+                        <th class="col-md-5">
+                            Комментарий
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each messages}}
+                        <tr>
+                            <td class="col-md-2">
+                                {{currentTime}} {{currentDate}}
+                            </td>
+                            <td class="col-md-2">
+                                {{userFromName}}
+                            </td>
+                            <td class="col-md-3">
+                                <a href="/task/{{taskId}}">{{taskName}}</a>
+                            </td>
+                            <td class="col-md-5">
+                                {{comment}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
 
 		</div>
 	</div>

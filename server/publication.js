@@ -14,6 +14,10 @@ Meteor.publish('mytasks', function() {
   return Tasks.find({employer: this.userId});
 });
 
+Meteor.publish('mymessages', function() {
+  return Messages.find({userTo: this.userId});
+});
+
 Meteor.publish('notifications', function() {
   return Notifications.find({user: this.userId});
 });

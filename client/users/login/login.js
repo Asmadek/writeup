@@ -9,7 +9,7 @@ Template.login.events({
         var error = Meteor.loginWithPassword(email, password);
 
         if (error) {
-            
+
         } else {
             Router.go("index");
         }
@@ -22,5 +22,3 @@ Template.login.onCreated(function(){
         Router.go("index");
     }
 });
-
-

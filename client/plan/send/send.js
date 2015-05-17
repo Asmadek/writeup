@@ -2,23 +2,23 @@ Template.send.events({
     'click #sendButton': function(event, template) {
         event.preventDefault();
         event.stopPropagation();
-                
+
         var taskId = Session.get("taskId");
 		Session.set("taskId", null);
-        
+
         var message = {
-            id : taskId,
+            date: new Date(),
+            taskId : taskId,
             userTo : $("#inputUser").val(),
             userFrom : Meteor.user()._id,
             comment: $("#inputComment").val()
         };
-
-console.log(message);
+        
         Meteor.call('sendTask', message, function(error, id) {
             console.log(error);
             console.log(id);
 
-			
+
             Router.go("/task/"+taskId);
         });
     }
@@ -42,7 +42,7 @@ Template.send.helpers({
         today = yyyy + "-" + mm + '-'+dd;
 
         return today;
-    }, 
+    },
     'employers': function () {
         return Meteor.users.find().fetch();
     },

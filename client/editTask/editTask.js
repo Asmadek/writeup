@@ -15,7 +15,7 @@ Template.editTask.events({
             status: this.status,
             value : this.value
         };
-        
+
         var id = this._id;
 
         Meteor.call('updateTask', id, task, function(error) {
@@ -48,7 +48,7 @@ Template.editTask.helpers({
         today = yyyy + "-" + mm + '-'+dd;
 
         return today;
-    }, 
+    },
     'employers': function () {
 
         return Meteor.users.find().fetch();
@@ -59,7 +59,7 @@ Template.editTask.helpers({
     'isEmployer': function () {
         if (this._id == Session.get("employer"))
             return "selected";
-        else 
+        else
             return "";
     }
 })
