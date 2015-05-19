@@ -9,7 +9,7 @@ Template.login.events({
         var error = Meteor.loginWithPassword(email, password);
 
         if (error) {
-
+            alert("Ошибка авторизации");
         } else {
             Router.go("index");
         }

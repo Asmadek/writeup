@@ -1,32 +1,4 @@
-Accounts.onLogin(function (event) {
-
-});
-
 Meteor.methods({
-    addNews: function(item) {
-        var user = Meteor.user();
-
-        if (!user)
-            throw new Meteor.Error(401, "Вы должны войти чтобы добавить новый материал");
-
-        var news = {
-            name: item.name,
-            content: item.content,
-            deadlineDate: new Date(item.deadlineDate),
-            deadlineTime: new Date(item.deadlineTime),
-            created: new Date().getTime(),
-            performer: item.performer,
-            volume: item.volume
-        };
-
-        if (Groups.findOne({_id: item.group}) == null) {
-            Groups.insert({_id: item.group, name: Meteor.user().userName(), creator: Meteor.user()._id});
-        }
-
-        var newsId = News.insert(news);
-
-        return newsId;
-    },
     regUser: function(name, sname, email, password, company) {
 
         var error = Accounts.createUser({
@@ -35,13 +7,12 @@ Meteor.methods({
                             password : password,
                             profile  : {
                                 name: name,
-                                sname: sname
+                                sname: sname,
+                                admin: false,
+                                ban: false
                             }});
 
         var user = Meteor.users.findOne({username: email});
-
-        if (!error)
-            Companies.insert({company: company, auther: user._id});
 
         return error;
 
@@ -51,19 +22,43 @@ Meteor.methods({
             task.creator = Meteor.user()._id;
             task.value = task.content.length;
             task.status = STATUS_ENG.writeup;
-            
+
             var id = Tasks.insert(task);
+
+            var message = {
+                date: task.createDate,
+                userTo: task.employer,
+                userFrom: null,
+                taskId: id,
+                comment: SYSTEM_MESSAGES.addTask
+            };
+
+            Messages.insert(message);
+
             return id;
         };
     },
     updateTask: function(id, task) {
-        if (task) {            
-            var id = Tasks.update({_id: id}, task);
-        };
+        if (task) {
+            var oldTask = Tasks.findOne({_id: id});
+
+            if (oldTask.employer != task.employer) {
+                var message = {
+                    date: task.createDate,
+                    userTo: task.employer,
+                    userFrom: null,
+                    taskId: id,
+                    comment: SYSTEM_MESSAGES.addTask
+                };
+                Messages.insert(message);
+            }
+
+            var res = Tasks.update({_id: id}, task);
+        }
     },
     completeTask: function(id) {
         if (id) {
-            
+
             var res = Tasks.update({_id: id}, {$set: {status: STATUS_ENG.completed}});
             return res;
         };
@@ -83,8 +78,32 @@ Meteor.methods({
         return res;
     },
     editUser: function(user){
-        var res = Meteor.users.update({_id: user.id}, {$set:{"profile.name": user.name, "profile.sname": user.sname}});
+        var res = Meteor.users.update({_id: user.id},
+            {
+                $set: {
+                    "profile.name": user.name,
+                    "profile.sname": user.sname,
+                    "profile.admin": user.admin
+                }
+            });
         return res;
-    }
-    
+    },
+    sendEmail: function (to, from, subject, text) {
+        check([to, from, subject, text], [String]);
+
+        this.unblock();
+
+        Email.send({
+          to: to,
+          from: from,
+          subject: subject,
+          text: text
+        });
+      }
+
+
+});
+
+Meteor.startup(function () {
+    process.env.MAIL_URL = 'smtp://postmaster@sandbox81cc17236b2b49cdb4244245e90dfd26.mailgun.org:c2ca411d24115d01cedcf6ab093b19c7@smtp.mailgun.org:25';
 });

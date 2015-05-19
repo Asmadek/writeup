@@ -1,0 +1,29 @@
+{
+  "servers": [
+    {
+      "host": "urfu-writeu.cloudapp.net",
+      "username": "asmadek",
+      "password": "Byajhvfnbrf2012"
+    }
+  ],
+
+  "setupMongo": true,
+
+  "setupNode": true,
+
+  "nodeVersion": "0.10.36",
+
+  "setupPhantom": true,
+
+  "enableUploadProgressBar": true,
+
+  "appName": "Mediacenter",
+
+  "app": ".",
+
+  "env": {
+      "port": 3000
+  },
+
+  "deployCheckWaitTime": 30
+}

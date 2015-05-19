@@ -7,15 +7,18 @@ Template.registration.events({
         var sname = $("#inputSName").val();
         var email = $("#inputEmail").val();
         var password = $("#inputPassword").val();
+        var confirmpassword = $("#inputConfirmPassword").val();
 
         Meteor.call('regUser', name, sname, email, password, function(error) {
             console.log(error);
 
             var newError = Meteor.loginWithPassword(email, password);
-            console.log(newError);
 
             if (!newError)
                 Router.go('index');
+            else
+                alert("Ошибка регистрации");
+
         });
     }
 })

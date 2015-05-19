@@ -7,6 +7,7 @@ Template.editUser.events({
             id: this._id,
             name : $("#inputName").val(),
             sname : $("#inputSName").val(),
+            admin: $("#inputAdmin").val()
         };
         Meteor.call('editUser', user, function(error) {
             console.log(error);

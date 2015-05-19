@@ -2,27 +2,31 @@ Template.editTask.events({
     'submit': function(event, template) {
         event.preventDefault();
         event.stopPropagation();
-        
+
         var task = {
             title :$("#inputTitle").val(),
-            measure : $("#inputMeasure").val(),
-            count : $("#inputCount").val(),
+            count : parseInt($("#inputCount").val()),
             employer : $("#inputEmployer").val(),
             deadlineDate : $("#inputDeadlineDate").val(),
             deadlineTime : $("#inputDeadlineTime").val(),
             comment: $("#inputComment").val(),
             content: this.content,
             status: this.status,
-            value : this.value
+            value : this.value,
+            createDate: new Date()
         };
 
-        var id = this._id;
+        if ((task.title == "") || (count == NaN)) {
+            alert("Ошибка при сохранении");
+        } else {
+            var id = this._id;
 
-        Meteor.call('updateTask', id, task, function(error) {
-            console.log(error);
+            Meteor.call('updateTask', id, task, function(error) {
+                console.log(error);
 
-            Router.go("/task/"+id);
-        });
+                Router.go("/task/"+id);
+            });
+        }
     }
 });
 

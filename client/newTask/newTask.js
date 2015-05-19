@@ -2,25 +2,28 @@ Template.newTask.events({
     'submit': function(event, template) {
         event.preventDefault();
         event.stopPropagation();
-        
+
         var task = {
             title :$("#inputTitle").val(),
-            measure : $("#inputMeasure").val(),
-            count : $("#inputCount").val(),
+            count : parseInt($("#inputCount").val()),
             employer : $("#inputEmployer").val(),
             deadlineDate : $("#inputDeadlineDate").val(),
             deadlineTime : $("#inputDeadlineTime").val(),
+            createDate: new Date(),
             content: "Текст",
             comment: $("#inputComment").val()
         };
 
+        if ((task.title == "") || (count == NaN)) {
+            alert("Ошибка при сохранении");
+        } else {
+            Meteor.call('addTask', task, function(error, id) {
+                console.log(error);
+                console.log(id);
 
-        Meteor.call('addTask', task, function(error, id) {
-            console.log(error);
-            console.log(id);
-
-            Router.go("/task/"+id);
-        });
+                Router.go("/task/"+id);
+            });
+        }
     }
 });
 
@@ -42,7 +45,7 @@ Template.newTask.helpers({
         today = yyyy + "-" + mm + '-'+dd;
 
         return today;
-    }, 
+    },
     'employers': function () {
         return Meteor.users.find().fetch();
     },
