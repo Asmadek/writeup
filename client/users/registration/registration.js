@@ -9,6 +9,16 @@ Template.registration.events({
         var password = $("#inputPassword").val();
         var confirmpassword = $("#inputConfirmPassword").val();
 
+        if ((confirmpassword != password) ||
+            (name.length == 0) ||
+            (sname.length == 0) ||
+            (email.length == 0))
+        {
+            alert("Ошибка регистрации");
+            return true;
+        }
+
+
         Meteor.call('regUser', name, sname, email, password, function(error) {
             console.log(error);
 
