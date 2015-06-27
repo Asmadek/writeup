@@ -14,7 +14,7 @@ Template.newTask.events({
             comment: $("#inputComment").val()
         };
 
-        if ((task.title == "") || (count == NaN)) {
+        if ((task.title == "") || !(Number.parseInt(task.count) > 0)) {
             alert("Ошибка при сохранении");
         } else {
             Meteor.call('addTask', task, function(error, id) {

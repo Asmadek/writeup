@@ -16,7 +16,7 @@ Template.editTask.events({
             createDate: new Date()
         };
 
-        if ((task.title == "") || (count == NaN)) {
+        if ((task.title == "") || !(Number.parseInt(task.count) > 0)) {
             alert("Ошибка при сохранении");
         } else {
             var id = this._id;
