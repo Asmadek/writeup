@@ -1,11 +1,10 @@
-Template.current.helpers({
+Template.completedmy.helpers({
     'tasksGrouped': function() {
-        var tasks = Tasks.find({status: STATUS_ENG.writeup}).fetch();
+        var tasks = Tasks.find().fetch();
         var temp = {};
         var indexes = [];
         var tasksGroupedArray = [];
-
-        for( var i = 0; i < tasks.length; i++) {
+        for( var i = 0; i< tasks.length; i++) {
             if (tasks[i].deadlineDate) {
                 var date = new Date(tasks[i].deadlineDate).getTime();
                 
@@ -18,10 +17,10 @@ Template.current.helpers({
                 }
             }
         }
-        
-        console.log(indexes);
 
         indexes.sort();
+        indexes.reverse();
+        
         for (var t in indexes) {
             tasksGroupedArray.push(temp[indexes[t]]);
         }

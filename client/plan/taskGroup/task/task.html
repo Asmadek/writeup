@@ -6,9 +6,13 @@
         <td class="col-md-1">{{progress}}%</td>
         <td class="col-md-1">{{statusRus}}</td>
         <td class="col-md-3">
-            <a href="#" class="complete">Завершить</a> |
+            {{#if completed}}
+                <a href="#" class="remove">Удалить</a> | 
+            {{else}}            
+                <a href="#" class="complete">Завершить</a> | 
+            {{/if}}
             <a href="#" class="send" data-toggle="modal" data-target="#myModal">Отправить</a> |
-            <a href="/task/{{_id}}/edit">Редактировать</a>
+            <a href="/task/{{_id}}">Редактировать</a>
         </td>
     </tr>
 </template>

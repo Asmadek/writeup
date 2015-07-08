@@ -13,13 +13,34 @@ Template.send.events({
             userFrom : Meteor.user()._id,
             comment: $("#inputComment").val()
         };
-        
+
+        var newmessage = 'Пользователь ' + Meteor.user().profile.name + ' ' + Meteor.user().profile.sname 
+            + ' Отправил вам материал.\n---------\nКомментарий: ' + message.comment + '\n---------\n' 
+            + 'http://' + window.location.host + '/task/' + taskId + '';
+
+        var user = Meteor.users.findOne({_id: message.userTo});
+        console.log(user.username);
+        console.log(newmessage);
+
+        var message = "Пользователь " + Meteor.user().profile.name + " " +
+            Meteor.user().profile.sname + " " +
+            Meteor.user().username +  " отправил сообщение \""+
+            window.location.host + "\"";
+
+        Meteor.call('sendEmail',
+                    user.username,
+                    'alma2610@ya.ru',
+                    'WriteUp',
+                    message, 
+                    function (error, result) {
+                        if (!error)
+                            alert("Вы отправили сообщение")
+                    });
+
         Meteor.call('sendTask', message, function(error, id) {
             console.log(error);
             console.log(id);
 
-
-            Router.go("/task/"+taskId);
         });
     }
 });

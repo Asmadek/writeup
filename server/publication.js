@@ -10,6 +10,13 @@ Meteor.publish('tasks', function() {
   return Tasks.find();
 });
 
+Meteor.publish('completed', function() {
+  return Tasks.find({status: "completed"});
+});
+Meteor.publish('completedmy', function() {
+  return Tasks.find({status: "completed", employer: this.userId});
+});
+
 Meteor.publish('mytasks', function() {
   return Tasks.find({employer: this.userId});
 });

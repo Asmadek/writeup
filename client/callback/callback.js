@@ -8,14 +8,15 @@ Template.callback.events({
             Meteor.user().username +  " отправил сообщение \""+
             $("#inputMessage").val() + "\"";
 
-        Meteor.call('sendEmail',
-                    'alma2610@ya.ru',
-                    'alma2610@ya.ru',
-                    'WriteUp',
-                    message, function (error, result) {
-                        if (!error)
-                            alert("Вы отправили сообщение")
-                    });
+            Meteor.call('sendEmail',
+                        'alma2610@ya.ru',
+                        'alma2610@ya.ru',
+                        'WriteUp',
+                        message, 
+                        function (error, result) {
+                            if (!error)
+                                alert("Вы отправили сообщение")
+                        });
 
     }
 })

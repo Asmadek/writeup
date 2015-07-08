@@ -1,0 +1,36 @@
+<template name="stat">
+	<div class='container-fluid'>
+	<div class="row">
+	<div class="jumbotron">
+	<div class='container '>
+
+	<h1>Статистика</h1>
+
+	</div>
+	</div>
+	</div>
+
+	</div>
+	<div class='container '>
+
+	<table class="table table-hover ">
+	<thead>
+	<tr>
+	<th>Исполнитель</th>
+	<th>Cимволы (в работе/сданы)</th>
+	<th>Материалы (в работе/сданы)</th>
+	</tr>
+	</thead>
+	<tbody>
+	{{#each users}}
+		<tr>
+			<td>{{profile.name}} {{profile.sname}}</td>
+			<td>{{symbols}}</td>
+			<td>{{materials}}</td>
+		</tr>
+	{{/each}}
+	</tbody>
+	</table>
+
+	</div>
+</template>

@@ -14,10 +14,25 @@ Template.newTask.events({
             comment: $("#inputComment").val()
         };
 
+
         if ((task.title == "") || !(Number.parseInt(task.count) > 0)) {
             alert("Ошибка при сохранении");
         } else {
             Meteor.call('addTask', task, function(error, id) {
+                var message = 'Вам назначена задача.\n\nhttp://' + window.location.host + '/task/' + id + '';
+
+                var user = Meteor.users.findOne({_id: task.employer});
+
+                Meteor.call('sendEmail',
+                    user.username,
+                    'admin@writeup.pro',
+                    'WriteUp - новая задача',
+                    message, 
+                    function (error, result) {
+                        console.log(error);
+                        console.log(result);
+                    });
+
                 console.log(error);
                 console.log(id);
 
