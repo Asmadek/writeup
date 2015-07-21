@@ -10,6 +10,10 @@ Meteor.publish('tasks', function() {
   return Tasks.find();
 });
 
+Meteor.publish('subtasks', function() {
+  return Subtasks.find();
+});
+
 Meteor.publish('completed', function() {
   return Tasks.find({status: "completed"});
 });

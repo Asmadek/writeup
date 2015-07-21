@@ -19,19 +19,12 @@ Template.send.events({
             + 'http://' + window.location.host + '/task/' + taskId + '';
 
         var user = Meteor.users.findOne({_id: message.userTo});
-        console.log(user.username);
-        console.log(newmessage);
-
-        var message = "Пользователь " + Meteor.user().profile.name + " " +
-            Meteor.user().profile.sname + " " +
-            Meteor.user().username +  " отправил сообщение \""+
-            window.location.host + "\"";
 
         Meteor.call('sendEmail',
                     user.username,
                     'alma2610@ya.ru',
                     'WriteUp',
-                    message, 
+                    newmessage, 
                     function (error, result) {
                         if (!error)
                             alert("Вы отправили сообщение")

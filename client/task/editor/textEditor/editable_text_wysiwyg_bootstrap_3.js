@@ -1,5 +1,6 @@
 // Without this, the editableText widget will fall back to a textarea:
 EditableText.wysiwyg = true;
+EditableText.showToolbar = true;
 
 // Events specific to this particular implementation of the bootstrap-wysiwyg editor
 
