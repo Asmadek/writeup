@@ -11,6 +11,12 @@
                         {{#if comment}}
                             <h5>Комментарий: {{comment}}</h5>
                         {{/if}}
+                        <div>
+            				<input type="file" id="newsImageInput" multiple accept="image/*">
+            				{{#each newsImages}}
+            					{{> newsImage}}
+            				{{/each}}
+                        </div>
                     </div>
                 </div>
             </div>
