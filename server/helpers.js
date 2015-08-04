@@ -34,7 +34,7 @@ Meteor.methods({
             };
 
             Messages.insert(message);
-            
+
             return id;
         };
     },

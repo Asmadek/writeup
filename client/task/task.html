@@ -5,9 +5,9 @@
                 <div class="container">
                     <h3>{{title}} <small><a href="/task/{{_id}}/edit">Редактировать</a></small></h3>
                     <div>
-                        <h5>{{value}} / {{count}} символов </h5>
-                        <h5>{{deadlineTime}} {{newDate}}</h5>
-                        <h5>{{fullname}}</h5>
+                        <h5>Завершено {{value}} / {{count}} символов </h5>
+                        <h5>Срок сдачи: {{deadlineTime}} {{newDate}}</h5>
+                        <h5>Исполнитель: {{fullname}}</h5>
                         {{#if comment}}
                             <h5>Комментарий: {{comment}}</h5>
                         {{/if}}
@@ -16,6 +16,33 @@
             				{{#each newsImages}}
             					{{> newsImage}}
             				{{/each}}
+                        </div>
+                        <br />
+                        <div class="input-group col-md-4">
+                            {{#if backStage}}
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default changeStage" data-stage={{backStage._id}}>
+                                        {{backStage.name}}
+                                    </button>
+                                </span>
+                            {{/if}}
+                            <select class="form-control" id="inputEmployer">
+                                {{#each employers}}
+                                    <option {{isEmployer}} value="{{_id}}">
+                                        {{fullname}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default changeStage" data-stage="{{currentStage._id}}">
+                                    {{currentStage.name}}
+                                </button>
+                                {{#if nextStage}}
+                                    <button type="button" class="btn btn-default changeStage" data-stage={{nextStage._id}}>
+                                        {{nextStage.name}}
+                                    </button>
+                                {{/if}}
+                            </span>
                         </div>
                     </div>
                 </div>

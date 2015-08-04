@@ -12,6 +12,7 @@ Template.editTask.events({
             comment: $("#inputComment").val(),
             content: this.content,
             status: this.status,
+            stage: this.stage,
             value : this.value,
             createDate: new Date()
         };

@@ -3,6 +3,8 @@ Template.newTask.events({
         event.preventDefault();
         event.stopPropagation();
 
+        var stage = Stages.findOne({step: 1});
+
         var task = {
             title :$("#inputTitle").val(),
             count : parseInt($("#inputCount").val()),
@@ -11,9 +13,9 @@ Template.newTask.events({
             deadlineTime : $("#inputDeadlineTime").val(),
             createDate: new Date(),
             content: "Текст",
-            comment: $("#inputComment").val()
+            comment: $("#inputComment").val(),
+            stage: stage._id
         };
-
 
         if ((task.title == "") || !(Number.parseInt(task.count) > 0)) {
             alert("Ошибка при сохранении");
@@ -27,7 +29,7 @@ Template.newTask.events({
                     user.username,
                     'admin@writeup.pro',
                     'WriteUp - новая задача',
-                    message, 
+                    message,
                     function (error, result) {
                         console.log(error);
                         console.log(result);

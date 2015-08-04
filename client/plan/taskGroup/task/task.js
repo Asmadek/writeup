@@ -3,8 +3,9 @@ Template.taskItem.helpers({
 		var user = Meteor.users.findOne({_id: this.employer});
 		return user.profile.name + " " + user.profile.sname;
 	},
-	'statusRus': function() {
-		return STATUS_RUS[this.status];
+	'stageName': function() {
+		var stage = Stages.findOne(this.stage);
+		return stage.name;
 	},
 	'progress': function (params) {
 		return Math.floor((this.value * 100) / this.count);
@@ -21,13 +22,16 @@ Template.taskItem.events({
         	}
         });
 	},
-	'click .remove': function (event, template) {
-        Tasks.remove({_id: this._id});
+	'click .uncomplete': function (event, template) {
+		Tasks.update({_id: this._id}, {
+        		$set: {status: STATUS_ENG.writeup
+        	}
+        });
 	},
 	'click .send': function (event, template) {
 		Session.set("taskId", this._id);
 		if (template.find('#repeatToEmail').val()) {
-			
+
 		}
-	}	
+	}
 })

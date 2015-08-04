@@ -3,13 +3,12 @@
         <td class="col-md-1">{{deadlineTime}}</td>
         <td class="col-md-4"><a href="/task/{{_id}}">{{title}}</a></td>
         <td class="col-md-2">{{fullname}}</td>
-        <td class="col-md-1">{{progress}}%</td>
-        <td class="col-md-1">{{statusRus}}</td>
+        <td class="col-md-2">{{stageName}}</td>
         <td class="col-md-3">
             {{#if completed}}
-                <a href="#" class="remove">Удалить</a> | 
-            {{else}}            
-                <a href="#" class="complete">Завершить</a> | 
+                <a href="#" class="uncomplete">Вернуть</a> |
+            {{else}}
+                <a href="#" class="complete">Завершить</a> |
             {{/if}}
             <a href="#" class="send" data-toggle="modal" data-target="#myModal">Отправить</a> |
             <a href="/task/{{_id}}">Редактировать</a>

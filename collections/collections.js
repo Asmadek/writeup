@@ -3,7 +3,7 @@ Tasks = new Meteor.Collection('tasks');
 Notifications = new Meteor.Collection('notifications');
 
 Companies = new Meteor.Collection('companies');
-Measures = new Meteor.Collection('measures');
+Stages = new Meteor.Collection('stages');
 Messages = new Meteor.Collection('messages');
 
 Images = new FS.Collection("images", {

@@ -37,8 +37,8 @@ Meteor.publish('companies', function() {
   return Companies.find({auther: this.userId});
 });
 
-Meteor.publish('measures', function() {
-  return Measures.find();
+Meteor.publish('stages', function() {
+  return Stages.find();
 });
 
 Meteor.publish('images', function() {
