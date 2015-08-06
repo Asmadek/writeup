@@ -2,7 +2,7 @@ Template.editor.events({
 	'input .wysiwyg': function (event, template) {
 		var text = template.$('.wysiwyg').text();
 		Tasks.update({_id: template.data._id}, {$set: {value: text.length}});
-		
+
 		var html = template.$('.wysiwyg').html();
 
 		Session.set('text', html);
@@ -14,6 +14,33 @@ Template.editor.events({
 })
 
 Template.editor.onRendered(function () {
+	var editor = new MediumEditor('.text-editor', {
+	    delay: 1000,
+	    targetBlank: true,
+	    toolbar: {
+	        buttons: ['bold', 'italic', 'quote'],
+	        diffLeft: 25,
+	        diffTop: 10,
+	    },
+	    anchor: {
+	        placeholderText: 'Type a link',
+	        customClassOption: 'btn',
+	        customClassOptionText: 'Create Button'
+	    },
+		paste: {
+	        forcePlainText: true,
+	        cleanPastedHTML: false,
+	        cleanReplacements: [],
+	        cleanAttrs: ['class', 'style', 'dir'],
+	        cleanTags: ['meta']
+	    },
+	    anchorPreview: {
+	        hideDelay: 300
+	    },
+	    placeholder: {
+	        text: 'Click to edit'
+	    }
+	});
 	window.addEventListener("beforeunload", function(e){
 		if (Session.get('textId')) {
 			Tasks.update({_id: Session.get('textId')}, {$set: {content: Session.get('text')}});
@@ -30,4 +57,3 @@ Template.editor.onRendered(function () {
 		}
 	}, false);
 });
-

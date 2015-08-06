@@ -1,6 +1,7 @@
 Template.plan.helpers({
     'tasksGrouped': function() {
-        var tasks = Tasks.find({status: STATUS_ENG.writeup}).fetch();
+        var tasks = Tasks.find({status: STATUS_ENG.writeup}, {sort: {deadlineTime: 1}}).fetch();
+
         var temp = {};
         var indexes = [];
         var tasksGroupedArray = [];
