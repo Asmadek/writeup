@@ -1,0 +1,16 @@
+<template name="messagesTemplate">
+    <tr>
+        <td class="col-md-2">
+            {{currentTime}} {{currentDate}}
+        </td>
+        <td class="col-md-2">
+            {{userFromName}}
+        </td>
+        <td class="col-md-3">
+            <a href="/task/{{taskId}}">{{taskName}}</a>
+        </td>
+        <td class="col-md-5">
+            {{comment}}
+        </td>
+    </tr>
+</template>

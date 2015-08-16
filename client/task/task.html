@@ -1,48 +1,58 @@
 <template name="task">
+    <script>
+        "{{employerSet}}";
+        "{{stageSet}}";
+    </script>
     <div class="container-fluid">
         <div class="row">
             <div class="jumbotron">
                 <div class="container">
-                    <h3>{{title}} <small><a href="/task/{{_id}}/edit">Редактировать</a></small></h3>
-                    <div>
-                        <h5>Завершено {{value}} / {{count}} символов </h5>
-                        <h5>Срок сдачи: {{deadlineTime}} {{newDate}}</h5>
-                        <h5>Исполнитель: {{fullname}}</h5>
+                    <div class="col-md-6">
+                        <h3>{{title}} <small><a href="/task/{{_id}}/edit">Редактировать</a></small></h3>
+                        <h5><b>Завершено:</b> {{value}} / {{count}} символов </h5>
+                        <h5><b>Срок сдачи:</b> {{deadlineTime}} {{newDate}}</h5>
+                        <h5><b>Исполнитель:</b> {{fullname}}</h5>
+                        <h5><b>Этап:</b> {{stageName}}</h5>
                         {{#if comment}}
-                            <h5>Комментарий: {{comment}}</h5>
+                            <h5><b>Комментарий:</b> {{comment}}</h5>
                         {{/if}}
+                        <div class="col-md-12">
+                            <div class="stage-input row">
+                                <div class="input-group col-sm-12 col-md-5">
+                                    <select class="form-control" id="inputEmployer">
+                                        {{#each employers}}
+                                            <option {{isEmployer}} value="{{_id}}">
+                                                {{employerFullname}}
+                                            </option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="input-group col-sm-12 col-md-7">
+                                    <select class="form-control" id="inputStage">
+                                        {{#each stages}}
+                                            <option {{isStage}} value="{{_id}}">
+                                                {{name}}
+                                            </option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default changeStage">
+                                            Назначить
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Фотографии</h3>
                         <div>
             				<input type="file" id="newsImageInput" multiple accept="image/*">
+                            <br>
             				{{#each newsImages}}
             					{{> newsImage}}
             				{{/each}}
-                        </div>
-                        <br />
-                        <div class="input-group col-md-4">
-                            {{#if backStage}}
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default changeStage" data-stage={{backStage._id}}>
-                                        {{backStage.name}}
-                                    </button>
-                                </span>
-                            {{/if}}
-                            <select class="form-control" id="inputEmployer">
-                                {{#each employers}}
-                                    <option {{isEmployer}} value="{{_id}}">
-                                        {{fullname}}
-                                    </option>
-                                {{/each}}
-                            </select>
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default changeStage" data-stage="{{currentStage._id}}">
-                                    {{currentStage.name}}
-                                </button>
-                                {{#if nextStage}}
-                                    <button type="button" class="btn btn-default changeStage" data-stage={{nextStage._id}}>
-                                        {{nextStage.name}}
-                                    </button>
-                                {{/if}}
-                            </span>
                         </div>
                     </div>
                 </div>

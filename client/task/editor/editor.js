@@ -18,9 +18,7 @@ Template.editor.onRendered(function () {
 	    delay: 1000,
 	    targetBlank: true,
 	    toolbar: {
-	        buttons: ['bold', 'italic', 'quote'],
-	        diffLeft: 25,
-	        diffTop: 10,
+	        buttons: null
 	    },
 	    anchor: {
 	        placeholderText: 'Type a link',

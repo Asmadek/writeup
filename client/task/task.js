@@ -19,7 +19,7 @@ Template.task.helpers({
 	'employers': function () {
 		return Meteor.users.find().fetch();
 	},
-	'fullname': function() {
+	'employerFullname': function() {
 		return this.profile.name + " " + this.profile.sname;
 	},
 	'isEmployer': function () {
@@ -28,22 +28,26 @@ Template.task.helpers({
 		else
 			return "";
 	},
-	'nextStage': function() {
-		var stage = Stages.findOne({_id: this.stage});
-
-		var nextStage = Stages.findOne({step: stage.step + 1});
-		return (nextStage) ? nextStage : null;
+	'isStage': function () {
+		if (this._id == Session.get("stage"))
+			return "selected";
+		else
+			return "";
 	},
-	'backStage': function() {
-		var stage = Stages.findOne({_id: this.stage});
-
-		var backStage = Stages.findOne({step: stage.step - 1});
-		return (backStage) ? backStage : null;
+	'employerSet': function () {
+		Session.set('employer', this.employer);
+		return this.employer;
 	},
-	'currentStage': function() {
-		var stage = Stages.findOne({_id: this.stage});
-
-		return (stage) ? stage : null;
+	'stageSet': function () {
+        Session.set('stage', this.stage);
+        return this.employer;
+    },
+	'stages': function() {
+		return Stages.find();
+	},
+	'stageName': function() {
+		var stage =  Stages.findOne({_id: this.stage});
+		return stage.name;
 	}
 
 });
@@ -61,7 +65,7 @@ Template.task.events({
 	},
 	'click .changeStage': function (event, template) {
 		this.employer = $("#inputEmployer").val();
-		this.stage = $(event.currentTarget).data('stage');
+		this.stage = $("#inputStage").val();;
 
 		Meteor.call('updateTask', this._id, this, function() {
 			// body...
