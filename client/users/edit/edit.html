@@ -1,9 +1,17 @@
 <template name="editUser">
-    <div class="container registration">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Редактировать пользователя</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             <form class="form-horizontal">
               <fieldset>
-                <legend>Редактировать пользователя</legend>
                 <div class="form-group">
                   <label for="inputName" class="col-lg-2 control-label">Имя</label>
                   <div class="col-lg-10">
@@ -16,13 +24,33 @@
                     <input type="text" class="form-control" id="inputSName" value="{{profile.sname}}">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputAdmin" class="col-lg-2 control-label">Администратор</label>
-                  <div class="col-lg-10">
-                    <input type="checkbox" id="inputAdmin" value="{{profile.admin}}">
-                  </div>
-                </div>
-
+                {{#if settingsAlowed}}
+                    <div class="form-group">
+                      <label for="inputGroup" class="col-lg-2 control-label">Группа</label>
+                      <div class="col-md-2">
+                        <select class="form-control" id="inputGroup">
+                            {{#each groups}}
+                                <option value="{{_id}}" selected="{{isCurrentGroup}}">
+                                    {{name}}
+                                </option>
+                            {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputStatus" class="col-lg-2 control-label">Статус</label>
+                        <div class="col-md-2">
+                            <select class="form-control " id="inputStatus">
+                                <option value="false" selected="{{active}}">
+                                    Активный
+                                </option>
+                                <option value="true" selected="{{banned}}">
+                                    Заблокирован
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                {{/if}}
                 <div class="form-group">
                   <div class="col-lg-10 col-lg-offset-2">
                     <button type="submit" class="btn btn-primary">Сохранить</button>

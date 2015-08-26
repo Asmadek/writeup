@@ -1,0 +1,41 @@
+<template name="groupPage">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Группа: {{name}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h3>Настройки прав доступа</h3>
+                <ul class="list-group" id="rules">
+                    {{#each rules}}
+                        <li class="list-group-item">
+                            <span class="bage"><input type="checkbox" checked="{{checked}}"></span>
+                            {{ruleName}}
+                        </li>
+                    {{/each}}
+                </ul>
+                <a href="#" class="btn btn-default" id="saveRules">Сохранить</a>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <h3>Участники</h3>
+                    {{#if users}}
+                        <div class="list-group">
+                            {{#each users}}
+                                <a href="/user/{{this._id}}/edit" class="list-group-item">
+                                    {{this.profile.name}} {{this.profile.sname}}
+                                </a>
+                            {{/each}}
+                        </div>
+                    {{else}}
+                        <div class="alert alert-info" role="alert">Вы ещё не добавили пользователей в эту группу. Вы можете сделать это со страницы редактирования пользователей.</div>
+                    {{/if}}
+            </div>
+        </div>
+    </div>
+</template>

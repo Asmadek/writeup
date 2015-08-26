@@ -1,4 +1,7 @@
 <template name="editor">
-	<!--<div class="text-editor">{{content}}</div>-->
-	{{> editableText collection="tasks" field="content" wysiwyg=true acceptEmpty=false showToolbar=true}}
+	<a href="#" class="btn btn-default save">Save</a>
+		<!--<a href="#" class="btn btn-default insert">Insert</a>-->
+
+	<div class="text-editor">{{{content}}}</div>
+	<!--{{> editableText collection="tasks" field="content" wysiwyg=true acceptEmpty=false showToolbar=true}}-->
 </template>

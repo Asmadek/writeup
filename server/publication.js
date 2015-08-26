@@ -6,12 +6,12 @@ Meteor.publish('messages', function() {
   return Messages.find();
 });
 
-Meteor.publish('tasks', function() {
-  return Tasks.find();
+Meteor.publish('history', function() {
+  return History.find();
 });
 
-Meteor.publish('subtasks', function() {
-  return Subtasks.find();
+Meteor.publish('tasks', function() {
+  return Tasks.find();
 });
 
 Meteor.publish('completed', function() {
@@ -33,8 +33,8 @@ Meteor.publish('notifications', function() {
   return Notifications.find({user: this.userId});
 });
 
-Meteor.publish('companies', function() {
-  return Companies.find({auther: this.userId});
+Meteor.publish('groups', function() {
+  return Groups.find();
 });
 
 Meteor.publish('stages', function() {

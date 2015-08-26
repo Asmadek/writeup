@@ -8,7 +8,6 @@ Meteor.methods({
                             profile  : {
                                 name: name,
                                 sname: sname,
-                                admin: false,
                                 ban: false
                             }});
 
@@ -34,6 +33,17 @@ Meteor.methods({
             };
 
             Messages.insert(message);
+            
+            var history = {
+                createDate: new Date(),
+                userTo: task.employer,
+                userFrom: task.creator,
+                taskId: id,
+                stageTo: task.stage,
+                stageFrom: null
+            };
+            
+            History.insert(history);
 
             return id;
         };
@@ -46,13 +56,25 @@ Meteor.methods({
                 var message = {
                     date: task.createDate,
                     userTo: task.employer,
-                    userFrom: null,
+                    userFrom: Meteor.user()._id,
                     taskId: id,
                     comment: SYSTEM_MESSAGES.addTask
                 };
+                
                 Messages.insert(message);
             }
-
+            
+            var history = {
+                createDate: new Date(),
+                userTo: task.employer,
+                userFrom: Meteor.user()._id,
+                taskId: id,
+                stageTo: task.stage,
+                stageFrom: oldTask.stage
+            };
+            
+            History.insert(history);
+         
             var res = Tasks.update({_id: id}, task);
         }
     },
@@ -83,7 +105,8 @@ Meteor.methods({
                 $set: {
                     "profile.name": user.name,
                     "profile.sname": user.sname,
-                    "profile.admin": user.admin
+                    "profile.group": user.group,
+                    "profile.ban": user.ban
                 }
             });
         return res;

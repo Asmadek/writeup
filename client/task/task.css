@@ -1,3 +1,11 @@
 .stage-input .input-group {
     float: left;
 }
+
+.news-image {
+	height: 100px;
+}
+
+.image-wrapper {
+	float: left;
+}

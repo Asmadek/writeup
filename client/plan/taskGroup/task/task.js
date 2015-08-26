@@ -21,12 +21,32 @@ Template.taskItem.events({
         		$set: {status: STATUS_ENG.completed
         	}
         });
+		
+		var history = {
+			taskId: this._id,
+			'type': "status",
+			userFrom: Meteor.user()._id,
+			createDate: new Date(),
+			status: 'completed'
+		};
+		
+		History.insert(history);
 	},
 	'click .uncomplete': function (event, template) {
 		Tasks.update({_id: this._id}, {
         		$set: {status: STATUS_ENG.writeup
         	}
         });
+		
+		var history = {
+			taskId: this._id,
+			'type': "status",
+			userFrom: Meteor.user()._id,
+			createDate: new Date(),
+			status: 'writeup'
+		};
+		
+		History.insert(history);
 	},
 	'click .send': function (event, template) {
 		Session.set("taskId", this._id);

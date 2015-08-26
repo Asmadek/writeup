@@ -18,11 +18,64 @@
                 </div>
                 <div class="form-group">
                   <div class="col-lg-10 col-lg-offset-2">
-                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <button type="submit" class="btn btn-primary">Войти</button> <a href="#" data-toggle="modal" data-target="#forgetModel">Восстановить пароль</a>
                   </div>
                 </div>
               </fieldset>
             </form>
         </div>
     </div>
+    <div class="modal fade" id="forgetModel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h3>Восстановление пароля</h3>
+          </div>
+          <div class="modal-body">
+            <h4>Введите ваш email</h4>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email-reset" id="email-reset" value="">
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+            <button type="button" class="btn btn-primary" id="resetPassword">Восстановить</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" id="successReset">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h3>Восстановление пароля</h3>
+          </div>
+          <div class="modal-body">
+            <h4>Ссылка для восстановления отправлена на ваш email.</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" id="failReset">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h3>Ошибка восстановления</h3>
+          </div>
+          <div class="modal-body">
+            <h4>Аккаунт с данным email не зарегистрирован в системе. Попробуйте другие входные данные.</h4>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 </template>

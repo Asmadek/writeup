@@ -8,7 +8,22 @@
             <div class="jumbotron">
                 <div class="container">
                     <div class="col-md-6">
-                        <h3>{{title}} <small><a href="/task/{{_id}}/edit">Редактировать</a></small></h3>
+                        <h3>
+                            {{title}}
+                            {{#if editTaskAllowed}}
+                                <small><a href="/task/{{_id}}/edit">Редактировать</a> | </small>
+                            {{/if}}
+                            <small>
+                                {{#if completed}}
+                                    <a href="#" class="uncomplete">Вернуть</a> |
+                                {{else}}
+                                    <a href="#" class="complete">Завершить</a> |
+                                {{/if}}
+                            </small>
+                            <small>
+                                <a href="#" class="send" data-toggle="modal" data-target="#myModal">Отправить</a>
+                            </small>
+                        </h3>
                         <h5><b>Завершено:</b> {{value}} / {{count}} символов </h5>
                         <h5><b>Срок сдачи:</b> {{deadlineTime}} {{newDate}}</h5>
                         <h5><b>Исполнитель:</b> {{fullname}}</h5>
@@ -16,42 +31,51 @@
                         {{#if comment}}
                             <h5><b>Комментарий:</b> {{comment}}</h5>
                         {{/if}}
-                        <div class="col-md-12">
-                            <div class="stage-input row">
-                                <div class="input-group col-sm-12 col-md-5">
-                                    <select class="form-control" id="inputEmployer">
-                                        {{#each employers}}
-                                            <option {{isEmployer}} value="{{_id}}">
-                                                {{employerFullname}}
-                                            </option>
-                                        {{/each}}
-                                    </select>
-                                </div>
-                                <div class="input-group col-sm-12 col-md-7">
-                                    <select class="form-control" id="inputStage">
-                                        {{#each stages}}
-                                            <option {{isStage}} value="{{_id}}">
-                                                {{name}}
-                                            </option>
-                                        {{/each}}
-                                    </select>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default changeStage">
-                                            Назначить
-                                        </button>
-                                    </span>
+                        {{#if editEmployerAllowed}}
+                            <div class="col-md-12">
+                                <div class="stage-input row">
+                                    <div class="input-group col-sm-12 col-md-5">
+                                        <select class="form-control" id="inputEmployer">
+                                            {{#each employers}}
+                                                <option {{isEmployer}} value="{{_id}}">
+                                                    {{employerFullname}}
+                                                </option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="input-group col-sm-12 col-md-7">
+                                        <select class="form-control" id="inputStage">
+                                            {{#each stages}}
+                                                <option {{isStage}} value="{{_id}}">
+                                                    {{name}}
+                                                </option>
+                                            {{/each}}
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default changeStage">
+                                                Назначить
+                                            </button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
+                        {{/if}}
                     </div>
                     <div class="col-md-6">
                         <h3>Фотографии</h3>
                         <div>
-            				<input type="file" id="newsImageInput" multiple accept="image/*">
+                            {{#if editMaterialAllowed}}
+    				            <input type="file" id="newsImageInput" multiple accept="image/*">
+                            {{/if}}
+
                             <br>
             				{{#each newsImages}}
-            					{{> newsImage}}
+                                <div class="image-wrapper">
+                                    <a href="{{this.url}}" target="_blank" download><img src="{{this.url}}" class="news-image"></a> <br />
+                                    {{#if editMaterialAllowed}}
+                                        <a href="#" id="delete-image">Удалить</a>
+                                    {{/if}}
+                                </div>
             				{{/each}}
                         </div>
                     </div>
@@ -60,8 +84,27 @@
         </div>
     </div>
     <div class="container">
-        <div class="col-md-12">
-            {{> editor }}
+        <div class="col-md-8">
+            {{#if editMaterialAllowed}}
+                {{> editor }}
+            {{else}}
+                {{{content}}}
+            {{/if}}
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group">
+                {{#each history}}
+                    {{#if isStatus}}
+                        <li class="list-group-item">
+                            {{userFromTpl}} установил статус {{statusTpl}}
+                        </li>
+                    {{else}}
+                        <li class="list-group-item">
+                            {{userFromTpl}} назначил {{userToTpl}} на этап {{stageToTpl}}
+                        </li>
+                    {{/if}}
+                {{/each}}
+            </ul>
         </div>
     </div>
 </template>

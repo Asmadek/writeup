@@ -1,0 +1,61 @@
+<template name="search">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="jumbotron">
+        <div class="container">
+            <h1>Поиск</h1>
+            <form id="queryForm">
+              <div class="input-group col-sm-12 col-md-6">
+                  <input class="form-control" id="inputQuery" value="{{query}}">
+                  <span class="input-group-btn">
+                      <button type="submit" class="btn btn-default searchButton">
+                          Поиск
+                      </button>
+                  </span>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      {{#if count}}
+
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th class="col-md-2 col-sm-2">Срок сдачи</th>
+                      <th class="col-md-3 col-sm-3">Название</th>
+                      <th class="col-md-2 col-sm-2">Исполнитель</th>
+                      <th class="col-md-2 col-sm-2">Этап</th>
+                      <th class="col-md-3 col-sm-3">Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each tasks}}
+                    <tr>
+                        <td class="col-md-2 col-sm-2">{{deadlineTime}} {{currentDate}}</td>
+                        <td class="col-md-3 col-sm-3"><a href="/task/{{_id}}">{{title}}</a></td>
+                        <td class="col-md-2 col-sm-2">{{fullname}}</td>
+                        <td class="col-md-2 col-sm-2">{{stageName}}</td>
+                        <td class="col-md-3 col-sm-3">
+                            {{#if completed}}
+                                <a href="#" class="uncomplete">Вернуть</a> |
+                            {{else}}
+                                <a href="#" class="complete">Завершить</a> |
+                            {{/if}}
+                            <a href="#" class="send" data-toggle="modal" data-target="#myModal">Отправить</a> |
+                            <a href="/task/{{_id}}">Редактировать</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{else}}
+              <div class="alert alert-info" role="alert">По вашему запросу ничего не найдено.</div>
+            {{/if}}
+
+    </div>
+  </div>
+</template>

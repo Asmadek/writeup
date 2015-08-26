@@ -1,46 +1,49 @@
 <template name="stageSettings">
-    <h3>Измерения</h3>
-    <table class="table">
-        <thead>
-        <tr>
-            <th  class="col-md-4">
-                Название
-            </th>
-            <th class="col-md-4">
-                Этап
-            </th>
-            <th class="col-md-4">
-                Действия
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-            {{#each stages}}
-                {{> stageItem }}
-            {{/each}}
-        </tbody>
-    </table>
-    <button type="button" class="btn btn-primary" id="addStage">
-        Добавить этап
-    </button>
-    <br />
-    <div>
-        <form class="form-inline hide">
-            <div class="form-group">
-                <label for="inputName">Название</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Название">
-            </div>
-            <div class="form-group">
-                <label for="inputStep">Этап</label>
-                <select class="form-control" id="inputStep">
-                    {{#each stepsNumbers }}
-                        <option value="{{step}}">
-                            {{step}}
-                        </option>
+    {{>settingsHead}}
+    <div class="container">
+        <div class="row">
+            <h3>Этапы <a href="return false;" class="btn btn-primary" id="addStage">Добавить этап</a></h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th  class="col-md-4">
+                        Название
+                    </th>
+                    <th class="col-md-4">
+                        Этап
+                    </th>
+                    <th class="col-md-4">
+                        Действия
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each stages}}
+                        {{> stageItem }}
                     {{/each}}
-                </select>
+                </tbody>
+            </table>
+            <br />
+            <div>
+                <form class="form-inline hide">
+                    <div class="form-group">
+                        <label for="inputName">Название</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Название">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputStep">Этап</label>
+                        <select class="form-control" id="inputStep">
+                            {{#each stepsNumbers }}
+                                <option value="{{step}}">
+                                    {{step}}
+                                </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-default" id="save">Сохранить</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-default" id="save">Сохранить</button>
-        </form>
+        </div>
     </div>
+
 </template>

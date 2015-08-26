@@ -17,20 +17,20 @@ Template.stageSettings.events({
          event.preventDefault();
          event.stopPropagation();
 
-         $(".form-inline").removeClass('hide');
+         template.$(".form-inline").removeClass('hide');
     },
     "click #save": function(event, template){
          event.preventDefault();
          event.stopPropagation();
 
          var stage = {
-             name :$("#inputName").val(),
-             step : $("#inputStep").val()
+             name : template.$("#inputName").val(),
+             step : template.$("#inputStep").val()
          };
 
          Stages.insert(stage);
 
-         $("#inputName").val('')
-         $(".form-inline").addClass('hide');
+         template.$("#inputName").val('')
+         template.$(".form-inline").addClass('hide');
     }
 });
