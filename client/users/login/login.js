@@ -3,16 +3,18 @@ Template.login.events({
         event.preventDefault();
         event.stopPropagation();
 
-        var email = $("#inputEmail").val();
+        var email = $("#inputEmail").val().toLowerCase();
         var password = $("#inputPassword").val();
 
-        var error = Meteor.loginWithPassword(email, password);
+        var error = Meteor.loginWithPassword(email, password, function(error) {
+            if (error) {
+                alert(error.message);
+            } else {
+                Router.go("index");
+            }
+        });
 
-        if (error) {
-            alert("Ошибка авторизации");
-        } else {
-            Router.go("index");
-        }
+        
 
     },
     "click #resetPassword": function(event, template) {

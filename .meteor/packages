@@ -24,3 +24,5 @@ npm-container
 less
 mediumeditor:mediumeditor
 multiply:iron-router-progress
+msavin:mongol
+cfs:gridfs

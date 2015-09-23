@@ -122,7 +122,18 @@ Meteor.methods({
           subject: subject,
           text: text
         });
-      }
-
-
+      },
+    getDocx: function(taskId) {
+        var HtmlDocx = Meteor.npmRequire('html-docx-js');
+        var fs = Meteor.npmRequire('fs');
+        var task = Tasks.findOne({_id: taskId});
+        
+        var outputFile = task.title;
+        
+        var docx = HtmlDocx.asBlob( task.content );
+        fs.writeFile(outputFile + '.txt', docx, function(err) {
+           console.log(err);           
+           
+        });
+    }
 });

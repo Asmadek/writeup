@@ -14,7 +14,7 @@ Template.editUser.events({
             console.log(error);
 
             if (!error)
-                Router.go('settings');
+                history.back();
         });
     }
 })

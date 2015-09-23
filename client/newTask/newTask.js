@@ -17,7 +17,7 @@ Template.newTask.events({
             stage: stage._id
         };
 
-        if ((task.title == "") || !(Number.parseInt(task.count) > 0)) {
+        if ((task.title == "") || !(parseInt(task.count) > 0)) {
             alert("Ошибка при сохранении");
         } else {
             Meteor.call('addTask', task, function(error, id) {

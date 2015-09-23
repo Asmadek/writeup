@@ -7,9 +7,13 @@ Stages = new Meteor.Collection('stages');
 Messages = new Meteor.Collection('messages');
 History = new Meteor.Collection('history');
 
+WriteUpNews = new Meteor.Collection('writeUpNews');
+
 Images = new FS.Collection("images", {
     stores: [
-		new FS.Store.FileSystem("images")
+		new FS.Store.GridFS("images", {
+            chunkSize: 1024*1024*4
+        })
 	],
     filter: {
       allow: {

@@ -17,7 +17,7 @@ Template.editTask.events({
             createDate: new Date()
         };
 
-        if ((task.title == "") || !(Number.parseInt(task.count) > 0)) {
+        if ((task.title == "") || !(parseInt(task.count) > 0)) {
             alert("Ошибка при сохранении");
         } else {
             var id = this._id;

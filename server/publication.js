@@ -2,6 +2,10 @@ Meteor.publish('news', function() {
   return News.find();
 });
 
+Meteor.publish('writeUpNews', function() {
+  return WriteUpNews.find();
+});
+
 Meteor.publish('messages', function() {
   return Messages.find();
 });

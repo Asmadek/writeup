@@ -48,6 +48,8 @@ Template.editor.events({
 				value: text.length,
 				content: html
 			}});
+			template.$('#text-status').text('Сохранено');
+
 		}
 	},
 	'click .save': function (event, template) {
@@ -59,6 +61,7 @@ Template.editor.events({
 				value: text.length,
 				content: html
 			}});
+			template.$('#text-status').text('Сохранено');
 		}
 	},
 	'click .insert': function (event, template) {
@@ -71,7 +74,9 @@ Template.editor.events({
 	'input .text-editor': function (event, template) {		
 		var text = template.$('.text-editor').text();
 		var html = template.$('.text-editor').html();
-		
+
+		template.$('#text-status').text('Имеются несохранённые изменения');
+
 		Tasks.update({_id: template.data._id}, {$set: {
 			value: text.length,
 			//content: html
@@ -126,6 +131,7 @@ Template.editor.onRendered(function () {
 	    },
 		placeholder: false
 	});
+	/*
 	window.addEventListener("beforeunload", function(e){
 		var text = template.$('.text-editor').text();
 		var html = template.$('.text-editor').html();
@@ -150,6 +156,7 @@ Template.editor.onRendered(function () {
 			}});
 		}
 	}, false);
+	*/
 });
 
 function isArray(obj) {
