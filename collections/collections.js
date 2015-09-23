@@ -6,7 +6,7 @@ Groups = new Meteor.Collection('groups');
 Stages = new Meteor.Collection('stages');
 Messages = new Meteor.Collection('messages');
 History = new Meteor.Collection('history');
-
+TextHistory = new Meteor.Collection('textHistory');
 WriteUpNews = new Meteor.Collection('writeUpNews');
 
 Images = new FS.Collection("images", {

@@ -10,8 +10,12 @@ Meteor.publish('messages', function() {
   return Messages.find();
 });
 
-Meteor.publish('history', function() {
-  return History.find();
+Meteor.publish('history', function(_taskId) {
+  return History.find({taskId: _taskId});
+});
+
+Meteor.publish('textHistory', function(_taskId) {
+  return TextHistory.find({taskId: _taskId});
 });
 
 Meteor.publish('tasks', function() {
