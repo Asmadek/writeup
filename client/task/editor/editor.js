@@ -33,6 +33,9 @@ Template.editor.events({
 				date: new Date()
 			});
 		};
+	},	
+	'click .export': function (event, template) {
+		Meteor.call('getDocx', template.data._id);
 	},
 	'click .insert': function (event, template) {
 		event.preventDefault();

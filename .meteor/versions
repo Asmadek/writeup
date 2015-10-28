@@ -67,6 +67,7 @@ lawrentiy:vksdk@0.1.1
 less@1.0.14
 livedata@1.0.13
 localstorage@1.0.3
+loftsteinn:bootstrap3-daterangepicker@2.0.9
 logging@1.0.7
 mediumeditor:mediumeditor@5.2.0
 meteor@1.1.6
@@ -80,6 +81,7 @@ meteortoys:toykit@0.8.7
 minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
+momentjs:moment@2.9.0
 mongo@1.1.0
 mongo-livedata@1.0.8
 msavin:mongol@1.1.5

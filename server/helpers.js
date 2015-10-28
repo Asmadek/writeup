@@ -130,10 +130,9 @@ Meteor.methods({
         
         var outputFile = task.title;
         
-        var docx = HtmlDocx.asBlob( task.content );
-        fs.writeFile(outputFile + '.txt', docx, function(err) {
-           console.log(err);           
-           
+        var docx = HtmlDocx.asBlob( task.content );        
+        fs.writeFile(outputFile + '.txt', docx, function(err, info) {
+            
         });
     }
 });

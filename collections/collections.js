@@ -21,3 +21,10 @@ Images = new FS.Collection("images", {
       }
     }
 });
+Docx = new FS.Collection("docx", {
+    stores: [
+		new FS.Store.GridFS("docx", {
+            chunkSize: 1024*1024*4
+        })
+	]
+});

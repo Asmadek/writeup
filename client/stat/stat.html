@@ -1,36 +1,35 @@
 <template name="stat">
 	<div class='container-fluid'>
-	<div class="row">
-	<div class="jumbotron">
-	<div class='container '>
+		<div class="row">
+			<div class="jumbotron">
+				<div class='container'>
 
-	<h1>Статистика</h1>
+					<h1>Статистика</h1>
+
+					<div id="reportrange" class="col-md-3" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+					    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+					    <span></span> <b class="caret"></b>
+					</div>				
+				</div>
+			</div>
+		</div>
 
 	</div>
-	</div>
-	</div>
+		<div class='container'>
 
-	</div>
-	<div class='container '>
-
-	<table class="table table-hover ">
-	<thead>
-	<tr>
-	<th>Исполнитель</th>
-	<th>Cимволы (в работе/сданы)</th>
-	<th>Материалы (в работе/сданы)</th>
-	</tr>
-	</thead>
-	<tbody>
-	{{#each users}}
-		<tr>
-			<td>{{profile.name}} {{profile.sname}}</td>
-			<td>{{symbols}}</td>
-			<td>{{materials}}</td>
-		</tr>
-	{{/each}}
-	</tbody>
-	</table>
+		{{#each users}}
+			<div class="col-md-4">
+				<h3>{{profile.name}} {{profile.sname}}</h3>
+				<ul class="list-group">
+					{{#each history}}
+						<li class="list-group-item">
+							<span class="badge">{{count}}</span>
+							{{stageName}}
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+		{{/each}}
 
 	</div>
 </template>

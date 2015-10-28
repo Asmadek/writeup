@@ -14,6 +14,11 @@ Meteor.publish('history', function(_taskId) {
   return History.find({taskId: _taskId});
 });
 
+Meteor.publish('allHistory', function() {
+  return History.find();
+});
+
+
 Meteor.publish('textHistory', function(_taskId) {
   return TextHistory.find({taskId: _taskId});
 });
@@ -51,6 +56,10 @@ Meteor.publish('stages', function() {
 
 Meteor.publish('images', function() {
   return Images.find();
+});
+
+Meteor.publish('docx', function() {
+  return Docx.find();
 });
 
 Meteor.publish("userData", function () {

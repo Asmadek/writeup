@@ -13,9 +13,6 @@ Template.login.events({
                 Router.go("index");
             }
         });
-
-        
-
     },
     "click #resetPassword": function(event, template) {
         event.preventDefault();
