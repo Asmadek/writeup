@@ -4,6 +4,12 @@
             <div class="jumbotron">
                 <div class="container">
                     <h1>Контент-план</h1>
+                    <div>
+                        <a href="/plan">Все</a>
+                        {{#each themes}}
+                            | <a href="/plan/{{_id}}">{{name}}</a>
+                        {{/each}}
+                    </div>
                     <a href="/completed">Завершённые</a>
                 </div>
             </div>

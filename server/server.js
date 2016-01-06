@@ -7,7 +7,10 @@ Accounts.emailTemplates.resetPassword.subject = function (user) {
 	return "WriteUp - Восстановление пароля";
 };
 Accounts.emailTemplates.resetPassword.text = function (user, url) {
-    return "Вы запросили восстановление пароля.\n" + 
-    " Чтобы назначить новый пароль, перейдите по следующей ссылке:\n\n" + 
+    return "Вы запросили восстановление пароля.\n" +
+    " Чтобы назначить новый пароль, перейдите по следующей ссылке:\n\n" +
     url;
 };
+
+if (process.env.ROOT_URL == "http://urfu.writeup.pro")
+	Kadira.connect('97nqis9vQBcoiqDbA', '16a796e1-0c83-4ff7-81c2-a321c21fcb24');

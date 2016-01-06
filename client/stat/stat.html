@@ -9,17 +9,16 @@
 					<div id="reportrange" class="col-md-3" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
 					    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
 					    <span></span> <b class="caret"></b>
-					</div>				
+					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 		<div class='container'>
 
 		{{#each users}}
 			<div class="col-md-4">
-				<h3>{{profile.name}} {{profile.sname}}</h3>
+				<h3><a href="/stat/{{_id}}">{{profile.name}} {{profile.sname}}</a></h3>
 				<ul class="list-group">
 					{{#each history}}
 						<li class="list-group-item">

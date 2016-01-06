@@ -34,5 +34,9 @@ Template.plan.helpers({
         var stages = Statuses.find().fetch();
 
         return stages;
+    },
+    'themes': function () {
+
+        return Themes.find();
     }
 });

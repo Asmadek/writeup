@@ -23,7 +23,7 @@
 
   "env": {
       "port": 3000,
-      "ROOT_URL": "http://beta.writeup.pro"
+      "ROOT_URL": "http://urfu.writeup.pro"      
   },
 
   "deployCheckWaitTime": 30

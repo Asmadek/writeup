@@ -3,6 +3,8 @@ Tasks = new Meteor.Collection('tasks');
 Notifications = new Meteor.Collection('notifications');
 
 Groups = new Meteor.Collection('groups');
+Themes = new Meteor.Collection('themes');
+
 Stages = new Meteor.Collection('stages');
 Messages = new Meteor.Collection('messages');
 History = new Meteor.Collection('history');

@@ -50,6 +50,10 @@ Meteor.publish('groups', function() {
   return Groups.find();
 });
 
+Meteor.publish('themes', function() {
+  return Themes.find();
+});
+
 Meteor.publish('stages', function() {
   return Stages.find();
 });

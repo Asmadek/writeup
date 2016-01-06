@@ -1,0 +1,23 @@
+<template name="userStat">
+	<div class='container-fluid'>
+		<div class="row">
+			<div class="jumbotron">
+				<div class='container'>
+					<h4><small><a href="/stat"><span class="glyphicon glyphicon-chevron-left
+" aria-hidden="true"></span> Назад</a></small></h4>
+					<h1>{{profile.name}} {{profile.sname}}</h1>
+					<h2>{{groupName}}</h2>
+
+					<div id="reportrange" class="col-md-3" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+					    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+					    <span></span> <b class="caret"></b>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class='container'>
+		<div id="container-column" style="min-width: 310px; height: 400px;"></div>
+	</div>
+</template>

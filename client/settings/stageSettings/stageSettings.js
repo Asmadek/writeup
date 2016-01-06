@@ -28,6 +28,9 @@ Template.stageSettings.events({
              step : template.$("#inputStep").val()
          };
 
+         if (stege.name.length == 0)
+            return false;
+            
          Stages.insert(stage);
 
          template.$("#inputName").val('')

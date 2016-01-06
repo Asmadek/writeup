@@ -3,7 +3,7 @@ Template.newTask.events({
         event.preventDefault();
         event.stopPropagation();
 
-        var stage = Stages.findOne({step: 1});
+        var stage = Stages.findOne({step: "1"});
 
         var task = {
             title :$("#inputTitle").val(),
@@ -11,6 +11,7 @@ Template.newTask.events({
             employer : $("#inputEmployer").val(),
             deadlineDate : $("#inputDeadlineDate").val(),
             deadlineTime : $("#inputDeadlineTime").val(),
+            theme : $("#inputTheme").val(),
             createDate: new Date(),
             content: "Текст",
             comment: $("#inputComment").val(),
@@ -33,7 +34,8 @@ Template.newTask.events({
                     function (error, result) {
                         console.log(error);
                         console.log(result);
-                    });
+                    }
+                );
 
                 console.log(error);
                 console.log(id);
@@ -66,7 +68,14 @@ Template.newTask.helpers({
     'employers': function () {
         return Meteor.users.find().fetch();
     },
+    'themes': function () {
+        return Themes.find().fetch();
+    },
     'fullname': function() {
         return this.profile.name + " " + this.profile.sname;
+    },
+    'isCurrentUser': function () {
+        if (this._id == Meteor.userId())
+            return 'selected'
     }
 })
