@@ -1,4 +1,4 @@
-process.env.MAIL_URL = 'smtp://postmaster@writeup.pro:8c6eb1323a4a03b2387936f6fcd5e227@smtp.mailgun.org:25';
+process.env.MAIL_URL = '';
 
 Accounts.emailTemplates.siteName = "WriteUp";
 Accounts.emailTemplates.from = "WriteUp Admin <admin@writeup.pro>";
@@ -13,4 +13,4 @@ Accounts.emailTemplates.resetPassword.text = function (user, url) {
 };
 
 if (process.env.ROOT_URL == "http://urfu.writeup.pro")
-	Kadira.connect('97nqis9vQBcoiqDbA', '16a796e1-0c83-4ff7-81c2-a321c21fcb24');
+	Kadira.connect('', '');
